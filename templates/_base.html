@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{% endblock title %}</title>
+        <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+              {# Ref: https://jinja.palletsprojects.com/en/stable/tricks/#highlighting-active-menu-items #}
+              {% set navigation_bar = [
+                ('index.html', 'index', 'Home'),
+                ('blog/index.html', 'blog', 'Blog'),
+                ('about.html', 'about', 'About'),
+                ('interests.html', 'interests', 'Interests'),
+                ('priorities.html', 'priorities', 'Priorities'),
+                ('resume.html', 'resume', 'Resume'),
+              ] -%}
+              {% set active_page = active_page|default('index') %}
+              {%- block nav -%}
+                {%- for href, id, caption in navigation_bar %}
+                  <a href="{{ href|e }}"{% if id == active_page %} aria-current="page"{% endif %}>{{ caption|e }}</a>
+                {%- endfor -%}
+              {% endblock nav %}
+            </nav>
+
+            <h1>{% block heading_one %}{% endblock heading_one %}</h1>
+            {% block header %}{% endblock header %}
+        </header>
+
+        <main>
+          {% block content %}{% endblock content %}
+        </main>
+        <footer>
+            <p>Made with ❤️ and ☕️ by Luke Byrnes.</p>
+        </footer>
+    </body>
+</html>

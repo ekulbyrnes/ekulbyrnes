@@ -1,25 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Blog</title>
-        <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
-    </head>
-    <body>
-        <header>
-            <nav>
-                <a href="../index.html">Home</a>
-                <a href="./index.html" aria-current="page">Blog</a>
-                <a href="../about.html">About</a>
-                <a href="../interests.html">Interests</a>
-                <a href="../priorities.html">Priorities</a>
-                <a href="../resume.html">Resume</a>
-            </nav>
-
-            <h1>Blog</h1>
-        </header>
-
-        <main>
+{% extends "blog/_blog.html" %}
+{% block title %}Blog{% endblock title %}
+{% block heading_one %}Blog{% endblock heading_one %}
+{% block content %}
         <!-- content goes here -->
             <article>
                 <h2>
@@ -42,9 +24,4 @@
                 <p><time datetime="2024-10-30">October 30, 2024</time></p>
                 <p>This is Halloween, this is halloween! It's gonna be sPoOkY!</p>
             </article>
-        </main>
-        <footer>
-            <p>Made with ❤️ and ☕️ by Luke Byrnes.</p>
-        </footer>
-    </body>
-</html>
+{% endblock content %}
